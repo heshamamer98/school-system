@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/school.css' %}">
+<title>The School</title>
+<body>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-black navb">
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item h1 w3-wide active">THE SCHOOL</a>
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item pt">Home</a>
+  <a href="{% url 'blog-students' %}" class="w3-button w3-bar-item pt">All students</a>
+  <a href="{% url 'blog-logout' %}" class="w3-button w3-bar-item pt">Logout</a>
+
+  
+  <form method="POST" class="searchForm">
+    {% csrf_token %}
+    {{ searchform.id }}
+    <button type="submit" class="SearchBtn" name="SearchBtn"> search</button>
+  </form>
+
+  <!-- Description -->
+  <section class="w3-container w3-center w3-content Description" style="max-width:600px">
+    <h2 class="w3-wide name">THE SCHOOL</h2>
+    <p class="w3-opacity"><i>About The Site</i></p>
+    <p class="w3-justify">Welcome to  <b class="w3-wide">THE SCHOOL</b> site <br>
+      On this site, you will learn about a group of details related to the school in terms of students, teachers, study materials and other school systems.</p>
+  </section>
+</nav>
+
+  <table id="customers">
+    
+    <tr>
+        <th>Student #ID</th>
+        <th>Student Name</th>
+        <th>Delete</th>
+        <th>Edite</th>
+    </tr>
+    
+    {% for student in students %}
+
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+        <td>
+            <a class="delete-link" href="delete/{{student.id}}">Delete</a>
+        </td>
+        <td>
+            <a class="edite-link" href="edit/{{student.id}}">Edite</a>
+        </td>
+        </tr>
+        
+    {% endfor %}
+        
+    
+  </table>
+
+
+  <script src="https://kit.fontawesome.com/86a4780a8f.js" crossorigin="anonymous"></script>
+</body>
+</html>

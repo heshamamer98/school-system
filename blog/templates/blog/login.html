@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>LOGIN</title>
+</head>
+<body>
+    <section class="side">
+        <img src="/media/img.svg" alt="">
+    </section>
+
+    <section class="main">
+        <div class="login-container">
+            <p class="title">Welcome to THE SCHOOL</p>
+            <div class="separator"></div>
+            <p class="welcome-message">On this site, you will learn about a group of details related to the school in terms of students, teachers, study materials and other school systems.</p>
+
+            <form class="login-form" method="POST">
+                {% csrf_token %}
+                <div class="form-control">
+                    {{ form.username }}
+                    <!-- <input type="text" placeholder="Username"> -->
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-control">
+                    {{ form.password }}
+                    <!-- <input type="password" placeholder="Password"> -->
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <a href="#" class="forget-link">Forget The Password ?</a>
+                <button class="submit">Login</button>
+            </form>
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/school.css' %}">
+<title>The School</title>
+<body>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-black navb">
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item h1 w3-wide active">THE SCHOOL</a>
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item pt">Home</a>
+  <a href="{% url 'blog-students' %}" class="w3-button w3-bar-item pt">All students</a>
+  <a href="{% url 'blog-logout' %}" class="w3-button w3-bar-item pt">Logout</a>
+
+  
+  <form method="POST" class="searchForm">
+    {% csrf_token %}
+    {{ searchform.id }}
+    <button type="submit" class="SearchBtn" name="SearchBtn"> search</button>
+  </form>
+
+  <!-- Description -->
+  <section class="w3-container w3-center w3-content Description" style="max-width:600px">
+    <h2 class="w3-wide name">THE SCHOOL</h2>
+    <p class="w3-opacity"><i>About The Site</i></p>
+    <p class="w3-justify">Welcome to  <b class="w3-wide">THE SCHOOL</b> site <br>
+      On this site, you will learn about a group of details related to the school in terms of students, teachers, study materials and other school systems.</p>
+  </section>
+</nav>
+
+<form class="form-inline" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="body1">
+    <h2 class="w3-wide edite-title">Add student information</h2>
+    <div class="timeline timeline-1">
+      <div class="container container-1 right right-1">
+        <div class="content purple-bg">
+          
+            {{ form.image }}
+            {{ form.name }}
+            {{ form.stage }}
+            {{ form.age }}
+          
+        </div>
+      </div>
+      <div class="container container-1 left left-1">
+        <div class="content purple-bg">
+          <div style="padding:20px">
+            <button style="background-color: #474e5d; text-shadow: 2px 2px 4px #000000;" type="submit" name="StudentRegisterBtn">Add</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+  <div class="body" style="padding-bottom: 5rem;">
+    <h2 class="w3-wide delete-title">deleting</h2>
+    <div class="timeline">
+      <div class="container right">
+        <div class="content">
+          <img src="/media/default.jpg" style="max-width:100px">
+          <h2>Name of student</h2>
+          <p>Id of student</p>
+          <p>Stage of student</p>
+          <p>Age of student</p>
+        </div>
+      </div>
+      <div class="container left">
+        <div class="content">
+          <div id="overlay">
+            <div id="text">
+                <p class="id">Enter ID</p>
+                <div class="flex-id">
+                    <input type="text" name="" id="">
+                    <button class="id-btn" type="submit" onclick="off()">Done</button>
+                </div>
+            </div>
+          </div>
+          <div style="padding:20px">
+            <button style="color: #474e5d; background-color: white; font-weight: 500;" onclick="on()">Delete</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body1">
+    <h2 class="w3-wide edite-title">editing</h2>
+    <div class="timeline timeline-1">
+      <div class="container container-1 right right-1">
+        <div class="content purple-bg">
+          <img src="/media/default.jpg" style="max-width:100px">
+          <h2 class="color-white">Name of student</h2>
+          <p class="color-white">Id of student</p>
+          <p class="color-white">Stage of student</p>
+          <p class="color-white">Age of student</p>
+        </div>
+      </div>
+      <div class="container container-1 left left-1">
+        <div class="content purple-bg">
+          <div id="overlay">
+            <div id="text">
+                <p class="id">Enter ID</p>
+                <div class="flex-id">
+                    <input type="text" name="" id="">
+                    <button class="id-btn" type="submit" onclick="off()">Done</button>
+                </div>
+            </div>
+          </div>
+          <div style="padding:20px">
+            <button style="background-color: #474e5d; text-shadow: 2px 2px 4px #000000;" onclick="on()">Edite</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-xlarge">
+  <a href="#"><i class="fa fa-facebook-official white"></i></a>
+  <a href="#"><i class="fa fa-pinterest-p white"></i></a>
+  <a href="#"><i class="fa fa-twitter white"></i></a>
+  <a href="#"><i class="fa fa-flickr white"></i></a>
+  <a href="#"><i class="fa fa-linkedin white"></i></a>
+</footer>
+
+
+<script>
+function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+</body>
+</html>
+

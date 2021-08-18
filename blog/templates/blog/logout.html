@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/school.css' %}">
+<title>The School</title>
+<body>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-black navb" style="clip-path: none;">
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item h1 w3-wide active">THE SCHOOL</a>
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item pt">Home</a>
+  <a href="{% url 'blog-students' %}" class="w3-button w3-bar-item pt">All students</a>
+  
+  <a href="{% url 'blog-login' %}" class="w3-button w3-bar-item pt" style="float: right; margin-right: 20px;">Login</a>
+</nav>
+
+
+<div style="text-align: center; margin-top: 100px; overflow: scroll;">
+    <h1>To login again go to login page</h1> <br>
+    <a href="{% url 'blog-login' %}" style="text-decoration: none; color: blue;"> Login from here</a>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-xlarge" style="position: absolute; bottom: 0px; width: 100%;">
+  <a href="#"><i class="fa fa-facebook-official white"></i></a>
+  <a href="#"><i class="fa fa-pinterest-p white"></i></a>
+  <a href="#"><i class="fa fa-twitter white"></i></a>
+  <a href="#"><i class="fa fa-flickr white"></i></a>
+  <a href="#"><i class="fa fa-linkedin white"></i></a>
+</footer>
+
+</body>
+</html>
+

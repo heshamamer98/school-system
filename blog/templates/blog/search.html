@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/school.css' %}">
+<title>The School</title>
+<body>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-black navb" style="height: 80px;">
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item h1 w3-wide active">THE SCHOOL</a>
+  <a href="{% url 'blog-home' %}" class="w3-button w3-bar-item pt">Home</a>
+  <a href="{% url 'blog-students' %}" class="w3-button w3-bar-item pt">All students</a>
+  <a href="{% url 'blog-logout' %}" class="w3-button w3-bar-item pt">Logout</a>
+
+</nav>
+
+
+
+  <div class="body" style="padding-bottom: 5rem; margin-top: -27px;">
+    <h2 class="w3-wide delete-title">deleting</h2>
+    <div class="timeline">
+      <div class="container right">
+        <div class="content">
+          <img src="{{ student.image.url }}" style="max-width:100px">
+          <h2>{{ student.name }}</h2>
+          <p id="studentid">{{ student.id }}</p>
+          <p>{{ student.stage }}</p>
+          <p>{{ student.age }}</p>
+        </div>
+      </div>
+
+      <div class="container left">
+        <div class="content">
+          <div id="overlay">
+            <div id="text">
+              <p class="id">Enter ID</p>
+              <div class="flex-id">
+                    <form action="delete/{{student.id}}" onsubmit="return deletecheck(this)">
+                      <input type="text" id="confirm_studentid">
+                      <button class="id-btn" type="submit" onclick="off()">Done</button>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            <div style="padding:20px">
+              <button style="color: #474e5d; background-color: white; font-weight: 500;" onclick="on()">Delete</button>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="body1">
+    <h2 class="w3-wide edite-title">editing</h2>
+    <div class="timeline timeline-1">
+      <div class="container container-1 right right-1">
+        <div class="content purple-bg">
+          <img src="{{ student.image.url }}" style="max-width:100px">
+          <h2 class="color-white">{{ student.name }}</h2>
+          <p class="color-white">{{ student.id }}</p>
+          <p class="color-white">{{ student.stage }}</p>
+          <p class="color-white">{{ student.age }}</p>
+        </div>
+      </div>
+      <div class="container container-1 left left-1">
+        <div class="content purple-bg">
+          <div id="overlay_edit">
+            <div id="text_edit">
+                <p class="id_edit">Enter ID</p>
+                <div class="flex-id_edit">
+                  <form action="edit/{{student.id}}" onsubmit="return editcheck(this)">
+                    <input type="text" id="confirm_edit">
+                    <button class="id-btn_edit" type="submit" onclick="off_edit()">Done</button>
+                  </form>
+                </div>
+            </div>
+          </div>
+          <div style="padding:20px">
+            <button style="background-color: #474e5d; text-shadow: 2px 2px 4px #000000;" onclick="on_edit()">Edite</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-xlarge">
+  <a href="#"><i class="fa fa-facebook-official white"></i></a>
+  <a href="#"><i class="fa fa-pinterest-p white"></i></a>
+  <a href="#"><i class="fa fa-twitter white"></i></a>
+  <a href="#"><i class="fa fa-flickr white"></i></a>
+  <a href="#"><i class="fa fa-linkedin white"></i></a>
+</footer>
+
+
+<script>
+function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+
+  function on_edit(){
+    document.getElementById("overlay_edit").style.display = "block";
+  }
+
+  function off_edit() {
+    document.getElementById("overlay_edit").style.display = "none";
+  }
+  
+  function deletecheck(delete_form){
+    var first = document.getElementById("studentid").innerText;
+    var second = delete_form.confirm_studentid.value;
+    if (first != second) {
+      alert("The id isn't correct")
+      return false;
+    }
+  }
+
+  function editcheck(edit_form){
+    var first = document.getElementById("studentid").innerText;
+    var second = edit_form.confirm_edit.value;
+    if (first != second) {
+      alert("The id isn't correct")
+      return false;
+    }
+  }
+
+</script>
+</body>
+</html>
